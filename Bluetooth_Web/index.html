@@ -5,6 +5,7 @@
 
     <!-- Bluetooth Web -->
     <script>
+    var connected_device
     var connected = false;
     var connected_led_service_characteristic;
 
@@ -25,7 +26,10 @@
     setOn = function () {
         if (connected) {
             const writeval = Uint8Array.of(1);
-            connected_led_service_characteristic.writeValue(writeval)
+            connected_led_service_characteristic.writeValue(writeval).catch( error => {
+                console.error(error);
+                startScan()
+            })
         } else {
             startScan()
         }
@@ -34,7 +38,10 @@
     setOff = function () {
         if (connected) {
             const writeval = Uint8Array.of(0);
-            connected_led_service_characteristic.writeValue(writeval)
+            connected_led_service_characteristic.writeValue(writeval).catch( error => {
+                console.error(error);
+                startScan()
+            })
         } else {
             startScan()
         }
