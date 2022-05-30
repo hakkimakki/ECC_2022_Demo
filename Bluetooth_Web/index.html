@@ -35,6 +35,7 @@
         },
              error => {
                 console.error(error);
+                document.getElementById("debug").innerHTML = error;
             })
         } else {
             startScan()
@@ -50,6 +51,7 @@
         },
              error => {
                 console.error(error);
+                document.getElementById("debug").innerHTML = error;
             })
         } else {
             startScan()
@@ -74,6 +76,8 @@
     <p><b>Mesh Light:</b></p>
     <button style="height:70px; width:170px;color: rgb(13, 201, 75);" id="btn_on" onclick="setOn()">ON</button>
     <button style="height:70px; width:170px;color: rgb(245, 4, 4);" id="btn_off" onclick="setOff()">OFF</button>
+
+    <p id="debug">OK</p>
 
 
 </body>
