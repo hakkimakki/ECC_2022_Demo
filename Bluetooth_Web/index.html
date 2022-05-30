@@ -29,7 +29,7 @@
     setOn = function () {
         if (connected) {
             const writeval = Uint8Array.of(1);
-            connected_led_service_characteristic.writeValueWithoutResponse(writeval).then( rsp => {
+            connected_led_service_characteristic.writeValue(writeval).then( rsp => {
                 console.log('Write 1')
             return
         },
@@ -45,7 +45,7 @@
     setOff = function () {
         if (connected) {
             const writeval = Uint8Array.of(0);
-            connected_led_service_characteristic.writeValueWithoutResponse(writeval).then( rsp => {
+            connected_led_service_characteristic.writeValue(writeval).then( rsp => {
                 console.log('Write 0')
             return
         },
