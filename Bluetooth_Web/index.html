@@ -26,11 +26,8 @@
     setOn = function () {
         if (connected) {
             const writeval = Uint8Array.of(1);
-            connected_led_service_characteristic.writeValue(writeval).catch( error => {
+            connected_led_service_characteristic.writeValueWithoutResponse(writeval).catch( error => {
                 console.error(error);
-                return Promise.resolve()
-                    .then(() => this.delayPromise(500))
-                    .then(() => { connected_led_service_characteristic.writeValue(writeval);});
             })
         } else {
             startScan()
@@ -40,11 +37,8 @@
     setOff = function () {
         if (connected) {
             const writeval = Uint8Array.of(0);
-            connected_led_service_characteristic.writeValue(writeval).catch( error => {
+            connected_led_service_characteristic.writeValueWithoutResponse(writeval).catch( error => {
                 console.error(error);
-                return Promise.resolve()
-                    .then(() => this.delayPromise(500))
-                    .then(() => { connected_led_service_characteristic.writeValue(writeval);});
             })
         } else {
             startScan()
