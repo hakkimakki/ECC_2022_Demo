@@ -5,7 +5,7 @@
 
     <!-- Bluetooth Web -->
     <script>
-    var connected_device
+    var connected_device;
     var connected = false;
     var connected_led_service_characteristic;
 
@@ -28,6 +28,9 @@
             const writeval = Uint8Array.of(1);
             connected_led_service_characteristic.writeValue(writeval).catch( error => {
                 console.error(error);
+                return Promise.resolve()
+                    .then(() => this.delayPromise(500))
+                    .then(() => { connected_led_service_characteristic.writeValue(writeval);});
             })
         } else {
             startScan()
@@ -39,6 +42,9 @@
             const writeval = Uint8Array.of(0);
             connected_led_service_characteristic.writeValue(writeval).catch( error => {
                 console.error(error);
+                return Promise.resolve()
+                    .then(() => this.delayPromise(500))
+                    .then(() => { connected_led_service_characteristic.writeValue(writeval);});
             })
         } else {
             startScan()
