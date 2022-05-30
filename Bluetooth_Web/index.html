@@ -28,7 +28,6 @@
             const writeval = Uint8Array.of(1);
             connected_led_service_characteristic.writeValue(writeval).catch( error => {
                 console.error(error);
-                startScan()
             })
         } else {
             startScan()
@@ -40,7 +39,6 @@
             const writeval = Uint8Array.of(0);
             connected_led_service_characteristic.writeValue(writeval).catch( error => {
                 console.error(error);
-                startScan()
             })
         } else {
             startScan()
