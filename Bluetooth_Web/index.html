@@ -8,6 +8,7 @@
     var connected_device;
     var connected = false;
     var connected_led_service_characteristic;
+    var 
 
 
     startScan = function () {
@@ -26,7 +27,11 @@
     setOn = function () {
         if (connected) {
             const writeval = Uint8Array.of(1);
-            connected_led_service_characteristic.writeValueWithoutResponse(writeval).catch( error => {
+            connected_led_service_characteristic.writeValueWithoutResponse(writeval).then( rsp => {
+                console.log('Write 1')
+            return
+        },
+             error => {
                 console.error(error);
             })
         } else {
@@ -37,7 +42,11 @@
     setOff = function () {
         if (connected) {
             const writeval = Uint8Array.of(0);
-            connected_led_service_characteristic.writeValueWithoutResponse(writeval).catch( error => {
+            connected_led_service_characteristic.writeValueWithoutResponse(writeval).then( rsp => {
+                console.log('Write 0')
+            return
+        },
+             error => {
                 console.error(error);
             })
         } else {
